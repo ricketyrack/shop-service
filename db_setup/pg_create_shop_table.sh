@@ -1,0 +1,22 @@
+   create table shop (
+	id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+        storeNumber   int not null,
+        sitetype      varchar(30),
+        shopName      varchar(100),
+        highway       varchar(100),
+        exitNumber    varchar(50),
+        address       varchar(80),
+	city          varchar(40),
+        stateCd       char(02),
+        zipcode       varchar(20),
+        phone         varchar(15),
+        lat           numeric(20,16) default 0.00,
+        lng           numeric(20,16) default 0.00,
+        division      int default 0,
+        district      int default 0,
+        companycode   varchar(20),
+	timezone      char(30) default null,
+        changeddate   datetime not null default now(),
+	createddate   datetime not null default now(),
+        isdeleted     char(01) default 'N'
+    );
