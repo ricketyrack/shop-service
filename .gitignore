@@ -42,3 +42,6 @@ testem.log
 Thumbs.db
 
 *.~undo-tree~
+
+package-lock.json
+yarn.json

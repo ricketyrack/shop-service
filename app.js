@@ -73,16 +73,13 @@ app.post('/shop', cors(corsOptionsDelegate), async (req, res) => {
         const division      = req.body.division      ? req.body.division      : 0;
         const district      = req.body.district      ? req.body.district      : 0;
 	const client        = await pool.connect();
-	const rows = await client.query('insert into public.shop ('shopNumber, address, highway, exitNumber, city'
-          + ' , stateCd, zipcode, phone, lat, lng, division, district '
-	  + ' values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) '
-	  + ' returning id ',
+	const rows = await client.query("insert into public.shop (shopNumber, address, highway, exitNumber, city stateCd, zipcode, phone, lat, lng, division, district values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) returning id ",
 	  [ shopNumber, address, highway, exitNumber, city, stateCd, zipcode, phone, lat, lng, division, district ]);
 	handleResponse(res, rows.rows[0].id, 'insert returned uuid:' + rows.rows[0].id);
 	client.release();
 	console.log('db pool idle count:' + pool.idleCount);
     } catch(err) {
-	console.error('error inserting shopNumber: ' + shopNumber + ' + err);
+	console.error('error inserting shopNumber: ' + shopNumber + ':' + err);
 	res.status(500).send(err);
     };
 
