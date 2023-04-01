@@ -1,6 +1,6 @@
 #!/bin/bash
 
 psql shop <<EOF
-	create unique index shopnbridx on shop (shopNumber);
+	create unique index storeNumber on shop (storeNumber);
 
 EOF

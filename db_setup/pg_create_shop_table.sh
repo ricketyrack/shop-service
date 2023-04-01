@@ -16,7 +16,7 @@
         district      int default 0,
         companycode   varchar(20),
 	timezone      char(30) default null,
-        changeddate   datetime not null default now(),
-	createddate   datetime not null default now(),
+        changeddate   timestamp not null default now(),
+	createddate   timestamp not null default now(),
         isdeleted     char(01) default 'N'
     );
